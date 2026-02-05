@@ -89,8 +89,8 @@ export default function JourneyPage() {
                   <ul className="mt-3 ml-5 list-disc space-y-1 text-sm opacity-90">
                     <li>Learned about fundamental AWS services and cloud architecture patterns</li>
                     <li>
-                      Witnessed live demonstrations of how companies utilize AWS platforms, including detailed architecture showcases of their
-                      products
+                      Witnessed live demonstrations of how companies utilize AWS platforms, including detailed architecture showcases of
+                      their products
                     </li>
                     <li>Explored case studies of major companies using AWS, including Razorpay, Zenoti, PayU, etc.</li>
                   </ul>

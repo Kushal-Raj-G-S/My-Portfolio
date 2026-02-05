@@ -49,9 +49,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold md:text-4xl">
               Yo <span className="text-yellow-600">Kush</span> here! 👋
             </h2>
-            <p className="text-lg font-medium text-yellow-600 dark:text-yellow-500">
-              AI Product Builder & Future Product Designer/Manager
-            </p>
+            <p className="text-lg font-medium text-yellow-600 dark:text-yellow-500">AI Product Builder & Future Product Designer/Manager</p>
           </div>
 
           {/* Bio */}
@@ -88,8 +86,18 @@ export default function AboutPage() {
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-yellow-600 px-6 py-3 font-semibold text-white transition-all hover:bg-yellow-700 hover:shadow-lg hover:shadow-yellow-600/30"
             >
               <span className="relative z-10">Download Resume</span>
-              <svg className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              <svg
+                className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
               </svg>
             </a>
             <Link
