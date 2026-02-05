@@ -104,6 +104,95 @@ export default function JourneyPage() {
         <div className="mb-8">
           <h3 className="mb-4 text-xl font-semibold text-yellow-600 dark:text-yellow-500">Hackathons</h3>
           <div className="space-y-6">
+            {/* ImpactX 2025 */}
+            <div className="rounded-lg bg-white/50 p-6 shadow-sm backdrop-blur dark:bg-black/80">
+              <div className="flex flex-col gap-6">
+                {/* Header with title and status */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">ImpactX 2025</h3>
+                  <span className="rounded-full bg-yellow-600 px-3 py-1 text-xs text-white">1st Place Winner 🏆 | ₹25,000</span>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-6">
+                  {/* Team Photo */}
+                  <div className="flex-shrink-0 lg:w-80">
+                    <img
+                      src="/media/logos/impactx.jpg"
+                      alt="ImpactX 2025 Team Photo"
+                      className="w-full max-w-sm lg:max-w-none h-auto object-contain rounded-lg bg-white shadow-lg border border-gray-200 dark:border-gray-600"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <p className="text-sm font-medium mb-4">RNSIT | Bengaluru</p>
+                    <ul className="ml-5 list-disc space-y-2 text-sm opacity-90">
+                      <li>
+                        <strong>From an idea on paper to a prototype that spoke for itself</strong> — pushed through multiple rounds of pitches and prototype evaluations.
+                      </li>
+                      <li>
+                        Final jury round featured <strong>12 juries</strong> — 6 professors and 6 external experts, including representatives from 0xDay. What started as a formal evaluation transformed into an engaging live debate.
+                      </li>
+                      <li>
+                        When technical terms escaped us, we explained the logic and meaning instead — the 0xDay juries actually started backing us, helping clarify our points and turning the session into a collective brainstorming moment.
+                      </li>
+                      <li>
+                        <strong>🏆 Won First Place — Team Illu-minaati</strong> earning ₹25,000 and proving that consistency over confidence, clarity over jargon, and unwavering teamwork win the day.
+                      </li>
+                      <li>
+                        Collaborated with an incredible team: <strong>Chinmay D M, Umashankar S, Thanmay M Shetty</strong> — a reminder that execution beats perfection every single time.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* DecodeX 2025 */}
+            <div className="rounded-lg bg-white/50 p-6 shadow-sm backdrop-blur dark:bg-black/80">
+              <div className="flex flex-col gap-6">
+                {/* Header with title and status */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">DecodeX 2025</h3>
+                  <span className="rounded-full bg-yellow-600 px-3 py-1 text-xs text-white">First Runner-Up 🥈 | ₹15,000</span>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-6">
+                  {/* Team Photo */}
+                  <div className="flex-shrink-0 lg:w-80">
+                    <img
+                      src="/media/logos/decodex.jpg"
+                      alt="DecodeX 2025 Team Photo"
+                      className="w-full max-w-sm lg:max-w-none h-auto object-contain rounded-lg bg-white shadow-lg border border-gray-200 dark:border-gray-600"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <p className="text-sm font-medium mb-4">Hosted by IEEE SPS BMSIT & IEEE Bangalore Section | Bengaluru</p>
+                    <ul className="ml-5 list-disc space-y-2 text-sm opacity-90">
+                      <li>
+                        <strong>24 hours. Zero sleep. Infinite encoded and encrypted questions.</strong> A non-stop coding, decoding, and problem-solving marathon.
+                      </li>
+                      <li>
+                        Each question was a puzzle layered in ciphered data and tricky syntax. Every submission required reverse-engineering encryption, testing multiple solutions, and validating approaches to match the exact output format.
+                      </li>
+                      <li>
+                        <strong>🥈 Secured First Runner-Up position</strong> - Missing first place by just an hour on the final question, but earning ₹15,000 and invaluable experience.
+                      </li>
+                      <li>
+                        Collaborated with my brilliant team: <strong>Chinmay D M, Umashankar S, Vishnu Kashyap.D</strong>, and myself—working like a single algorithm, iterating over every possible solution until perfection.
+                      </li>
+                      <li>
+                        This wasn't just about ranks or prizes—it was about the adrenaline of decoding, the "aha!" moments, and pushing the limits of logic, syntax, and patience under pressure.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* The Social Hackathon */}
             <div className="rounded-lg bg-white/50 p-6 shadow-sm backdrop-blur dark:bg-black/80">
               <div className="flex flex-col gap-6">
                 {/* Header with title and status */}
@@ -212,45 +301,6 @@ export default function JourneyPage() {
               <p className="text-sm opacity-90">Learning community leadership skills | February 2025</p>
             </li>
           </ul>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section>
-        <h2 className="mb-6 text-2xl font-bold">Technical Skills</h2>
-
-        <div className="rounded-lg bg-white/50 p-6 shadow-sm backdrop-blur dark:bg-black/80">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div>
-              <h3 className="mb-3 text-lg font-bold">Languages</h3>
-              <ul className="list-disc pl-5 text-sm">
-                <li>Python</li>
-                <li>JavaScript/TypeScript</li>
-                <li>Java</li>
-                <li>C/C++</li>
-                <li>SQL</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-3 text-lg font-bold">Frameworks</h3>
-              <ul className="list-disc pl-5 text-sm">
-                <li>React.js</li>
-                <li>Next.js</li>
-                <li>Node.js</li>
-                <li>TensorFlow/PyTorch</li>
-                <li>Django</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-3 text-lg font-bold">Tools & Platforms</h3>
-              <ul className="list-disc pl-5 text-sm">
-                <li>Docker</li>
-                <li>Github</li>
-                <li>Figma</li>
-                <li>MongoDB</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
     </>

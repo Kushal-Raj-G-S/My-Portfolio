@@ -47,32 +47,39 @@ export default function AboutPage() {
           {/* Greeting */}
           <div className="space-y-3">
             <h2 className="text-3xl font-bold md:text-4xl">
-              Yo <span className="text-yellow-600">Kush</span> here! 👋
+              Hey, I'm <span className="text-yellow-600">Kush</span> 👋
             </h2>
-            <p className="text-lg font-medium text-yellow-600 dark:text-yellow-500">AI Product Builder & Future Product Designer/Manager</p>
+            <p className="text-lg font-medium text-yellow-600 dark:text-yellow-500">
+              Full Stack Software Engineer · Backend & AI Systems
+            </p>
           </div>
 
           {/* Bio */}
           <div className="space-y-4 text-base leading-relaxed opacity-90 md:text-lg">
             <p>
-              I love transforming ideas into <span className="font-semibold text-yellow-600 dark:text-yellow-500">innovative products</span>{' '}
-              that solve real problems. My journey is all about building things that delight users and drive real-world impact with AI and
-              technology.
+              I build <span className="font-semibold text-yellow-600 dark:text-yellow-500">end-to-end software systems</span> with a strong focus on
+              backend architecture, AI pipelines, and production-grade reliability.
+              My work sits at the intersection of engineering depth and real-world use cases.
             </p>
 
             <p>
-              Driven by <span className="font-semibold">curiosity and creativity</span>, I design, prototype, and iterate on AI-powered
-              solutions—from automating workflows to creating new user experiences.
+              I've shipped AI-powered platforms used by real users, designed scalable APIs,
+              and engineered multi-model systems that prioritize uptime, cost efficiency,
+              and performance over hype.
             </p>
 
             <p>
-              My focus is on blending <span className="font-semibold">design, tech, and business sense</span> to turn ambitious concepts
-              into practical, user-centered products.
+              While I care deeply about user experience, my strength lies in
+              <span className="font-semibold"> turning complex ideas into robust systems</span>—
+              from data pipelines and RAG architectures to full-stack web applications.
             </p>
 
             <p className="font-medium">
-              Whether it's strategizing feature roadmaps, building MVPs, or collaborating with teams, I thrive on making things that matter.
-              <span className="block mt-2 text-yellow-600 dark:text-yellow-500">Let's build the future—one product at a time.</span>
+              I enjoy building MVPs, iterating fast, and solving problems where software
+              decisions actually matter.
+              <span className="block mt-2 text-yellow-600 dark:text-yellow-500">
+                If it runs in production, I'm interested.
+              </span>
             </p>
           </div>
 
