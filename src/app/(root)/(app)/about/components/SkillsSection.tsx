@@ -96,49 +96,63 @@ export default function SkillsSection() {
   }
 
   return (
-    <div className="mb-6">
-      <h2 className="mb-4 text-xl font-bold">Skills</h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div>
+      <div className="mb-8 space-y-2">
+        <h2 className="text-2xl font-bold md:text-3xl">Skills & Expertise</h2>
+        <p className="text-base opacity-75">Technologies and tools I work with to bring ideas to life</p>
+      </div>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((category) => {
           const isExpanded = expandedCategories.has(category.title)
           const displaySkills = isExpanded ? category.skills : category.skills.slice(0, 4)
 
           return (
-            <div key={category.title} className={`border rounded-lg p-4 transition-all duration-200 hover:shadow-md ${category.color}`}>
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">{category.icon}</span>
-                  <h3 className="font-semibold text-sm">{category.title}</h3>
+            <div
+              key={category.title}
+              className={`group relative overflow-hidden rounded-xl border p-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${category.color}`}
+            >
+              {/* Icon badge */}
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/60 text-xl shadow-sm dark:bg-black/40">
+                    {category.icon}
+                  </div>
+                  <h3 className="font-bold text-base">{category.title}</h3>
                 </div>
                 {category.skills.length > 4 && (
                   <button
                     onClick={() => toggleCategory(category.title)}
-                    className="text-xs px-2 py-1 rounded bg-white/50 dark:bg-black/20 hover:bg-white/70 dark:hover:bg-black/40 transition-colors"
+                    className="rounded-md bg-white/60 px-2.5 py-1 text-xs font-semibold transition-all hover:bg-white/80 dark:bg-black/30 dark:hover:bg-black/50"
                   >
-                    {isExpanded ? 'Show Less' : `+${category.skills.length - 4}`}
+                    {isExpanded ? '−' : `+${category.skills.length - 4}`}
                   </button>
                 )}
               </div>
 
-              <div className="flex flex-wrap gap-1.5">
+              {/* Skills tags */}
+              <div className="flex flex-wrap gap-2">
                 {displaySkills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-2 py-1 text-xs rounded-full bg-white/70 dark:bg-black/30 hover:bg-white dark:hover:bg-black/50 transition-colors cursor-default"
+                    className="rounded-lg bg-white/70 px-3 py-1.5 text-xs font-medium shadow-sm transition-all hover:bg-white hover:shadow dark:bg-black/40 dark:hover:bg-black/60"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
 
+              {/* View all link */}
               {category.skills.length > 4 && !isExpanded && (
                 <button
                   onClick={() => toggleCategory(category.title)}
-                  className="mt-2 text-xs text-gray-600 dark:text-gray-400 hover:underline"
+                  className="mt-3 text-xs font-semibold opacity-60 transition-opacity hover:opacity-100 hover:underline"
                 >
-                  View all {category.skills.length} skills
+                  View all {category.skills.length} skills →
                 </button>
               )}
+
+              {/* Accent gradient */}
+              <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-yellow-600/10 to-transparent opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
             </div>
           )
         })}
