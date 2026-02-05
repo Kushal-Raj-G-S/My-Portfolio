@@ -27,6 +27,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['react-icons'],
   },
+  outputFileTracing: false,
 }
 
 module.exports = nextConfig
