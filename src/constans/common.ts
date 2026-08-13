@@ -41,3 +41,9 @@ export const SHOWCASE_REPOS = [
   'Varinth-Agentic-AI-Verification-Platform',
   'naruto-shinobi-theme'
 ]
+
+// Repos whose demo video is hosted on YouTube (unlisted) instead of a local file —
+// used for videos too large for a normal git push (Vercel has no Git LFS support).
+export const PROJECT_YOUTUBE_VIDEOS: Record<string, string> = {
+  'Roast-Turn-Brutal-Reviews-into-Engineering-Tickets': 'rWrLyjjPphQ',
+}

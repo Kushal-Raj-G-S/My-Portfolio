@@ -1,4 +1,5 @@
 'use client'
+import { PROJECT_YOUTUBE_VIDEOS } from '@/constans/common'
 import langColors from '@/constans/langColors'
 import { IRepository } from '@/types'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
@@ -86,11 +87,12 @@ const Arrow: React.FC<{
 const Lightbox: React.FC<{
   images: string[]
   videos: string[]
+  youtubeId?: string
   initialMediaType: 'pics' | 'video'
   startIndex: number
   repo: IRepository
   onClose: () => void
-}> = ({ images, videos, initialMediaType, startIndex, repo, onClose }) => {
+}> = ({ images, videos, youtubeId, initialMediaType, startIndex, repo, onClose }) => {
   const [mediaType, setMediaType] = useState<'pics' | 'video'>(initialMediaType)
   const [idx, setIdx] = useState(startIndex)
   const [closing, setClosing] = useState(false)
@@ -185,7 +187,7 @@ const Lightbox: React.FC<{
           </div>
 
           {/* Lightbox Media Switcher */}
-          {videos.length > 0 && (
+          {(videos.length > 0 || youtubeId) && (
             <div className="flex bg-white/10 rounded-full p-0.5 border border-white/5 text-[9px] font-bold tracking-wider mr-2 select-none">
               <button
                 onClick={() => setMediaType('pics')}
@@ -221,7 +223,15 @@ const Lightbox: React.FC<{
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          {mediaType === 'video' && videos.length > 0 ? (
+          {mediaType === 'video' && youtubeId ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
+              title={`${repo.name} demo video`}
+              className="w-full h-full"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          ) : mediaType === 'video' && videos.length > 0 ? (
             <video
               ref={videoRef}
               src={videos[0]}
@@ -310,6 +320,8 @@ const Lightbox: React.FC<{
 // ── Main Card Component ───────────────────────────────────────────────────────
 const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
   const { images, videos } = useRepoMedia(repo.name)
+  const youtubeId = PROJECT_YOUTUBE_VIDEOS[repo.name]
+  const hasVideo = videos.length > 0 || !!youtubeId
   const [idx, setIdx] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [lightbox, setLightbox] = useState(false)
@@ -318,12 +330,12 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
   const prev = useCallback(() => setIdx((i) => (i === 0 ? images.length - 1 : i - 1)), [images.length])
   const next = useCallback(() => setIdx((i) => (i === images.length - 1 ? 0 : i + 1)), [images.length])
 
-  // Set default media type to video if videos are available
+  // Set default media type to video if a video is available
   useEffect(() => {
-    if (videos.length > 0) {
+    if (hasVideo) {
       setMediaType('video')
     }
-  }, [videos])
+  }, [hasVideo])
 
   // Auto-play: advance every 5s unless hovered, only 1 image, or in video mode
   useEffect(() => {
@@ -436,7 +448,7 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
         </div>
 
         {/* Media (Carousel / Video Player) */}
-        {images.length > 0 || videos.length > 0 ? (
+        {images.length > 0 || hasVideo ? (
           <div
             className="relative w-full overflow-hidden bg-black select-none cursor-pointer"
             style={{ aspectRatio: '16 / 9' }}
@@ -449,7 +461,7 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
             onTouchEnd={onTouchEnd}
           >
             {/* Top-Middle Video / Pics Switcher */}
-            {videos.length > 0 && (
+            {hasVideo && (
               <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 flex bg-black/60 dark:bg-black/80 backdrop-blur-md rounded-full p-0.5 border border-white/10 text-[9px] font-black tracking-wider select-none shadow-lg">
                 <button
                   onClick={(e) => { e.stopPropagation(); setMediaType('pics') }}
@@ -471,15 +483,23 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
             )}
 
             {/* Video Mode View */}
-            {mediaType === 'video' && videos.length > 0 ? (
+            {mediaType === 'video' && hasVideo ? (
               <div className="relative w-full h-full bg-black">
-                <video
-                  src={videos[0]}
-                  className="w-full h-full object-contain pointer-events-none"
-                  preload="metadata"
-                  muted
-                  playsInline
-                />
+                {youtubeId ? (
+                  <img
+                    src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+                    alt={`${repo.name} video thumbnail`}
+                    className="w-full h-full object-cover pointer-events-none"
+                  />
+                ) : (
+                  <video
+                    src={videos[0]}
+                    className="w-full h-full object-contain pointer-events-none"
+                    preload="metadata"
+                    muted
+                    playsInline
+                  />
+                )}
                 {/* Central play button */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white/40 active:scale-95">
@@ -612,6 +632,7 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
         <Lightbox
           images={images}
           videos={videos}
+          youtubeId={youtubeId}
           initialMediaType={mediaType}
           startIndex={idx}
           repo={repo}
