@@ -251,11 +251,9 @@ const Lightbox: React.FC<{
                   }}
                 >
                   <img
-                    key={i === idx ? `${src}-active` : src}
                     src={src}
                     alt={`${repo.name} ${i + 1}`}
                     className="w-full h-full object-contain"
-                    style={i === idx ? { animation: 'kenBurns 6s ease-out forwards' } : undefined}
                     draggable={false}
                   />
                 </div>
@@ -306,10 +304,6 @@ const Lightbox: React.FC<{
         @keyframes lightboxPanelOut {
           from { opacity: 1; transform: scale(1) translateY(0); }
           to   { opacity: 0; transform: scale(0.94) translateY(10px); }
-        }
-        @keyframes kenBurns {
-          from { transform: scale(1); }
-          to   { transform: scale(1.06); }
         }
       `}</style>
     </div>,
