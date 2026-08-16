@@ -7,8 +7,9 @@ import MDX from './components/MDX'
 
 export const revalidate = 3600
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) return {}
   return {
     title: post.metadata.title,
@@ -28,8 +29,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  let post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) {
     return notFound()
   }

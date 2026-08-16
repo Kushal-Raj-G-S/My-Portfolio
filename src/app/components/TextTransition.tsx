@@ -79,7 +79,7 @@ const TextTransition: React.FC<PropsWithChildren<TextTransitionProps>> = (props)
     >
       {transitions((styles, item) => {
         const element = (
-          <animated.div style={{ ...styles }} ref={item === children ? currentRef : undefined}>
+          <animated.div style={styles as any} ref={item === children ? currentRef : undefined}>
             {item}
           </animated.div>
         )
