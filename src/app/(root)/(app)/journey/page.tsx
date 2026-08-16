@@ -84,32 +84,6 @@ export default function JourneyPage() {
               </ul>
             </div>
           </AnimatedCard>
-
-          {/* Internship 2 */}
-          <AnimatedCard className="group flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6" delay={100}>
-            <img
-              src="/media/logos/aviratha.jpeg"
-              alt="Aviratha Digital Labs Logo"
-              className="w-20 h-20 object-contain rounded-full bg-white shadow transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3 sm:w-32 sm:h-32"
-            />
-            <div className="w-full flex-1">
-              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-xl font-bold">IoT Intern</h3>
-                <AnimatedBadge color="#57534e" isActive>
-                  Current
-                </AnimatedBadge>
-              </div>
-              <div className="mb-4 text-sm">
-                <p className="font-medium">Aviratha Digital Labs</p>
-                <p className="opacity-75">Jan 2025 - Present | Remote</p>
-              </div>
-              <ul className="ml-5 list-disc space-y-1 text-sm opacity-90">
-                <li>Developing IoT part of the Hydroponics project</li>
-                <li>Expertising in using ESP-32, AMB-82 mini,etc Microcontroller and in various sensors like PH, EC, DHT22,etc.</li>
-                <li>Focusing on building a custom PCB and creating a Product </li>
-              </ul>
-            </div>
-          </AnimatedCard>
         </div>
       </AnimatedSection>
 
@@ -274,6 +248,50 @@ export default function JourneyPage() {
                       </li>
                       <li>
                         Collaborated with my team: <strong>Chinmay D M, Vineeth Sagar H L, Thanmay M Shetty</strong> — proving that experience, composure, and knowing your project well enough to let it speak for itself can lead to strong outcomes.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </AnimatedCard>
+
+            {/* FORGE-X National Level 24-Hour Hackathon */}
+            <AnimatedCard className="group" delay={150}>
+              <div className="flex flex-col gap-6">
+                {/* Header with title and status */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold">FORGE-X 24-Hour Hackathon</h3>
+                  <AnimatedBadge color="#ca8a04">1st Place — Software Track 🏆</AnimatedBadge>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-6">
+                  {/* Team Photo */}
+                  <div className="flex-shrink-0 lg:w-80 overflow-hidden rounded-lg">
+                    <img
+                      src="/media/logos/forgex.jpg"
+                      alt="FORGE-X Hackathon Team Photo"
+                      className="w-full max-w-sm lg:max-w-none h-auto object-contain rounded-lg bg-white shadow-lg border border-gray-200 dark:border-gray-600 transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <p className="text-sm font-medium mb-4">CMR Institute of Technology | Bengaluru</p>
+                    <ul className="ml-5 list-disc space-y-2 text-sm opacity-90">
+                      <li>
+                        <strong>Built for 24 hours straight.</strong> Barely slept, questioned half our architecture decisions at 3AM like caffeinated philosophers pretending Docker logs were readable.
+                      </li>
+                      <li>
+                        <strong>🏆 Team Illuminaati secured 1st Place in the Software Track</strong> at the FORGE-X National Level 24-Hour Hackathon.
+                      </li>
+                      <li>
+                        Organized by the CMR Institute of Technology Incubation Center and the Institution&apos;s Innovation Council, centered around deep-tech product building under intense time pressure — no polished &ldquo;startup vibes,&rdquo; just raw execution, rapid iteration, and debugging under sleep deprivation.
+                      </li>
+                      <li>
+                        Built alongside <strong>Chinmay D M</strong> and <strong>Umashankar S</strong>, representing Artificial Intelligence &amp; Machine Learning, BMSIT, and competing on a national stage.
+                      </li>
+                      <li>
+                        What mattered most wasn&apos;t just the award — it was proving we could take an idea, pressure-test it hard, adapt fast, and still deliver when the clock was actively trying to kill the project.
                       </li>
                     </ul>
                   </div>
