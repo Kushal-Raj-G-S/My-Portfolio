@@ -268,7 +268,7 @@ export default function JourneyPage() {
                   {/* Team Photo */}
                   <div className="flex-shrink-0 lg:w-80 overflow-hidden rounded-lg">
                     <img
-                      src="/media/logos/forgex.jpg"
+                      src="/media/logos/forge.jpeg"
                       alt="FORGE-X Hackathon Team Photo"
                       className="w-full max-w-sm lg:max-w-none h-auto object-contain rounded-lg bg-white shadow-lg border border-gray-200 dark:border-gray-600 transition-transform duration-500 group-hover:scale-[1.03]"
                     />
@@ -279,19 +279,14 @@ export default function JourneyPage() {
                     <p className="text-sm font-medium mb-4">CMR Institute of Technology | Bengaluru</p>
                     <ul className="ml-5 list-disc space-y-2 text-sm opacity-90">
                       <li>
-                        <strong>Built for 24 hours straight.</strong> Barely slept, questioned half our architecture decisions at 3AM like caffeinated philosophers pretending Docker logs were readable.
+                        <strong>Built for 24 hours straight</strong>
+                        {' '}— a deep-tech product build under intense time pressure, no polished &ldquo;startup vibes,&rdquo; just raw execution and rapid iteration.
                       </li>
                       <li>
-                        <strong>🏆 Team Illuminaati secured 1st Place in the Software Track</strong> at the FORGE-X National Level 24-Hour Hackathon.
+                        <strong>🏆 Team Illuminaati secured 1st Place in the Software Track</strong> at the FORGE-X National Level Hackathon, organized by the CMR Institute of Technology Incubation Center.
                       </li>
                       <li>
-                        Organized by the CMR Institute of Technology Incubation Center and the Institution&apos;s Innovation Council, centered around deep-tech product building under intense time pressure — no polished &ldquo;startup vibes,&rdquo; just raw execution, rapid iteration, and debugging under sleep deprivation.
-                      </li>
-                      <li>
-                        Built alongside <strong>Chinmay D M</strong> and <strong>Umashankar S</strong>, representing Artificial Intelligence &amp; Machine Learning, BMSIT, and competing on a national stage.
-                      </li>
-                      <li>
-                        What mattered most wasn&apos;t just the award — it was proving we could take an idea, pressure-test it hard, adapt fast, and still deliver when the clock was actively trying to kill the project.
+                        Built alongside <strong>Chinmay D M</strong> and <strong>Umashankar S</strong>, representing AI &amp; ML, BMSIT, on a national stage.
                       </li>
                     </ul>
                   </div>
