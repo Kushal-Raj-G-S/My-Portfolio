@@ -1,6 +1,7 @@
 'use client'
 import TextTransition from '@/app/components/TextTransition'
 import langColors from '@/constans/langColors'
+import { LANG_ICONS } from '@/constans/langIcons'
 import { useMount } from '@/contexts/MountContext'
 import { config } from '@react-spring/web'
 import { memo, useEffect, useState } from 'react'
@@ -14,17 +15,26 @@ const LangTextAnimation: React.FC<{ items: string[] }> = ({ items }) => {
     return () => clearTimeout(intervalId)
   }, [items])
 
+  const current = items[index]
+  const langIcon = LANG_ICONS[current]
+
   return (
     <>
       {mounted && (
         <div className="relative inline-block text-sm font-bold">
           <TextTransition springConfig={config.wobbly} inline>
-            {items[index]}
+            {current}
           </TextTransition>
-          <span
-            className="absolute -right-6 top-1/2 block h-[1em] w-[1em] -translate-y-1/2 rounded-full pt-px transition-colors duration-500"
-            style={{ backgroundColor: langColors[items[index]] || '#cccccc' }}
-          />
+          {langIcon ? (
+            <span className="absolute -right-6 top-1/2 flex h-[1.15em] w-[1.15em] -translate-y-1/2 items-center justify-center transition-opacity duration-500">
+              <langIcon.Icon size={15} color={langIcon.color} />
+            </span>
+          ) : (
+            <span
+              className="absolute -right-6 top-1/2 block h-[1em] w-[1em] -translate-y-1/2 rounded-full pt-px transition-colors duration-500"
+              style={{ backgroundColor: langColors[current] || '#cccccc' }}
+            />
+          )}
         </div>
       )}
     </>

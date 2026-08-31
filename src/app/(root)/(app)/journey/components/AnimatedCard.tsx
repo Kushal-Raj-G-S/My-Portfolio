@@ -1,4 +1,5 @@
 'use client'
+import BorderGlow from '@/app/components/BorderGlow'
 import { animated, useSpring } from '@react-spring/web'
 import { PropsWithChildren, useRef, useState } from 'react'
 
@@ -38,16 +39,18 @@ const AnimatedCard: React.FC<PropsWithChildren<AnimatedCardProps>> = ({ children
   }
 
   return (
-    <animated.div
-      ref={cardRef}
-      style={{ ...springProps, transition: 'transform 300ms ease-out' }}
-      className={`rounded-lg bg-white/50 p-6 backdrop-blur dark:bg-black/80 [transform-style:preserve-3d] ${className}`}
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      {children}
-    </animated.div>
+    <BorderGlow borderRadius={8} glowRadius={22} glowIntensity={0.7} edgeSensitivity={32}>
+      <animated.div
+        ref={cardRef}
+        style={{ ...springProps, transition: 'transform 300ms ease-out' }}
+        className={`rounded-lg bg-white/50 p-6 backdrop-blur dark:bg-black/80 [transform-style:preserve-3d] ${className}`}
+        onMouseMove={onMouseMove}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {children}
+      </animated.div>
+    </BorderGlow>
   )
 }
 

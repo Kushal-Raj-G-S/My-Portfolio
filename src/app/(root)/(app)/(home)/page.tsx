@@ -1,17 +1,7 @@
-import { SOCIALS } from '@/constans/common'
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { SiGooglescholar, SiLeetcode } from 'react-icons/si'
-import SocialDock from './components/SocialDock'
+import SocialDock from '@/app/components/SocialDock'
+import { SOCIAL_DOCK_ITEMS } from '@/constans/socialDockItems'
 
 export const dynamic = 'force-dynamic'
-
-const SOCIAL_DOCK_ITEMS = [
-  { icon: <FaInstagram size={18} />, label: 'Instagram', href: SOCIALS.IG },
-  { icon: <FaGithub size={18} />, label: 'GitHub', href: SOCIALS.GH },
-  { icon: <FaLinkedin size={18} />, label: 'LinkedIn', href: SOCIALS.IN },
-  { icon: <SiGooglescholar size={18} />, label: 'Google Scholar', href: SOCIALS.SCHOLAR },
-  { icon: <SiLeetcode size={18} />, label: 'LeetCode', href: SOCIALS.LEETCODE },
-]
 
 export default function HomePage() {
   return (

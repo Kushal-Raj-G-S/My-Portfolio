@@ -1,4 +1,6 @@
+import SocialDock from '@/app/components/SocialDock'
 import { FORMSPREE_KEY } from '@/constans/common'
+import { SOCIAL_DOCK_ITEMS } from '@/constans/socialDockItems'
 import type { Metadata } from 'next'
 import PageTitle from '../components/PageTitle'
 import ContactForm from './components/ContactForm'
@@ -43,6 +45,12 @@ export default function ContactPage() {
               <span>Call: </span>
               <span className="hover:text-yellow-600">+91 9686293233</span>
             </p>
+          </div>
+          <div>
+            <h2 className="mb-3 text-lg font-bold">FIND ME ELSEWHERE</h2>
+            <div className="flex justify-center lg:justify-start">
+              <SocialDock items={SOCIAL_DOCK_ITEMS} />
+            </div>
           </div>
         </div>
         <div className="lg:flex-1">
