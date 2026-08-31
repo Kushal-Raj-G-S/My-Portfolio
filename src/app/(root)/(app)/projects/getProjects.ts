@@ -1,4 +1,4 @@
-import { SHOWCASE_REPOS } from '@/constans/common'
+import { PROJECT_LANGUAGE_OVERRIDES, SHOWCASE_REPOS } from '@/constans/common'
 import { IRepository } from '@/types'
 import timeFromNow from '@/utils/time-from-now'
 import 'server-only'
@@ -113,6 +113,14 @@ const getProjects = async (): Promise<IRepository[]> => {
           if (languages.length === 0) {
             console.log('No languages detected for', repo.name, '- Using Unknown')
             languages = [{ name: 'Unknown', size: 100 }]
+          }
+
+          // Some repos (e.g. a VS Code theme extension) are genuinely just
+          // JSON/markdown with no linguist-counted language — GitHub's API
+          // correctly returns nothing, so use the manual override instead of
+          // showing "Unknown".
+          if (PROJECT_LANGUAGE_OVERRIDES[repo.name]) {
+            languages = PROJECT_LANGUAGE_OVERRIDES[repo.name]
           }
 
           // Fetch last commit

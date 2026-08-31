@@ -47,3 +47,11 @@ export const SHOWCASE_REPOS = [
 export const PROJECT_YOUTUBE_VIDEOS: Record<string, string> = {
   'Roast-Turn-Brutal-Reviews-into-Engineering-Tickets': 'rWrLyjjPphQ',
 }
+
+// Repos where GitHub's linguist genuinely detects zero source-code language
+// (e.g. a VS Code theme extension is just JSON/markdown, no counted bytes),
+// so the API correctly returns {} and the app would otherwise show "Unknown".
+// Overrides the language bar/tag for that one repo with something accurate.
+export const PROJECT_LANGUAGE_OVERRIDES: Record<string, Array<{ name: string; size: number }>> = {
+  'naruto-shinobi-theme': [{ name: 'JSON', size: 100 }],
+}

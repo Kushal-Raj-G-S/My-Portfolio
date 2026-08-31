@@ -200,6 +200,7 @@ const langColors: { [key: string]: string } = {
   Dockerfile: '#2496ed',
   Blade: '#ff2d20',
   Unknown: '#cccccc',
+  JSON: '#292929',
   HCL: '#844FBA',
   SCSS: '#c6538c',
 }

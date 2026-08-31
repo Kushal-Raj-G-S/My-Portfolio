@@ -19,6 +19,7 @@ const fadeUp: Variants = {
 
 export default function AboutHero() {
   const frameRef = useRef<HTMLDivElement>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
 
   const onFrameMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = frameRef.current
@@ -27,9 +28,15 @@ export default function AboutHero() {
     const px = (e.clientX - rect.left) / rect.width
     const py = (e.clientY - rect.top) / rect.height
     el.style.transform = `perspective(900px) rotateX(${(0.5 - py) * 10}deg) rotateY(${(px - 0.5) * 10}deg)`
+    if (glowRef.current) {
+      glowRef.current.style.setProperty('--glow-x', `${px * 100}%`)
+      glowRef.current.style.setProperty('--glow-y', `${py * 100}%`)
+      glowRef.current.style.opacity = '1'
+    }
   }
   const onFrameMouseLeave = () => {
     if (frameRef.current) frameRef.current.style.transform = ''
+    if (glowRef.current) glowRef.current.style.opacity = '0'
   }
 
   return (
@@ -42,6 +49,17 @@ export default function AboutHero() {
       {/* Profile Image with animated gradient ring */}
       <motion.div variants={fadeUp} className="relative flex-shrink-0">
         <div className="relative h-fit w-fit [perspective:900px]">
+          {/* Cursor-following glow, matches accent color */}
+          <div
+            ref={glowRef}
+            aria-hidden
+            className="pointer-events-none absolute -inset-6 -z-10 opacity-0 transition-opacity duration-300 ease-out"
+            style={{
+              background:
+                'radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(202,138,4,0.45) 0%, transparent 60%)',
+              filter: 'blur(30px)',
+            }}
+          />
           {/* Rotating conic-gradient ring */}
           <motion.div
             aria-hidden

@@ -5,8 +5,10 @@ import { IRepository } from '@/types'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FiStar, FiX } from 'react-icons/fi'
+import BorderGlow from './BorderGlow'
 import LangBar from './LangBar'
 import LangTextAnimation from './LangTextAnimation'
+import MorphStage, { MorphStageHandle } from './MorphStage'
 
 const AUTOPLAY_MS = 5000
 
@@ -97,14 +99,15 @@ const Lightbox: React.FC<{
   const [idx, setIdx] = useState(startIndex)
   const [closing, setClosing] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const morphRef = useRef<MorphStageHandle>(null)
 
   const requestClose = useCallback(() => {
     setClosing(true)
     setTimeout(onClose, 200)
   }, [onClose])
 
-  const prev = () => setIdx((i) => (i === 0 ? images.length - 1 : i - 1))
-  const next = () => setIdx((i) => (i === images.length - 1 ? 0 : i + 1))
+  const prev = () => morphRef.current?.goTo(-1)
+  const next = () => morphRef.current?.goTo(1)
 
   // Close on ESC, navigate with arrow keys
   useEffect(() => {
@@ -145,8 +148,17 @@ const Lightbox: React.FC<{
       }}
       onClick={requestClose}
     >
+      <BorderGlow
+        className="w-full max-w-6xl"
+        borderRadius={16}
+        glowRadius={36}
+        glowIntensity={0.9}
+        edgeSensitivity={30}
+        glowColor="43 90 45"
+        colors={['#ca8a04', '#eab308', '#78350f']}
+      >
       <div
-        className="relative w-full max-w-6xl flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+        className="relative w-full flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-white/10"
         style={{
           background: 'linear-gradient(155deg, rgba(24,22,18,0.97), rgba(10,10,10,0.97))',
           maxHeight: '90vh',
@@ -241,23 +253,7 @@ const Lightbox: React.FC<{
             />
           ) : (
             <>
-              {images.map((src, i) => (
-                <div
-                  key={src}
-                  className="absolute inset-0 transition-[transform,opacity] duration-400 ease-out"
-                  style={{
-                    transform: `translateX(${(i - idx) * 100}%)`,
-                    opacity: i === idx ? 1 : 0,
-                  }}
-                >
-                  <img
-                    src={src}
-                    alt={`${repo.name} ${i + 1}`}
-                    className="w-full h-full object-contain"
-                    draggable={false}
-                  />
-                </div>
-              ))}
+              <MorphStage ref={morphRef} images={images} startIndex={idx} onSettled={setIdx} />
 
               {images.length > 1 && (
                 <>
@@ -275,7 +271,7 @@ const Lightbox: React.FC<{
             {images.map((src, i) => (
               <button
                 key={src}
-                onClick={() => setIdx(i)}
+                onClick={() => { morphRef.current?.jumpTo(i); setIdx(i) }}
                 className={`relative flex-shrink-0 overflow-hidden rounded-md border transition-all duration-300 ${
                   i === idx
                     ? 'w-16 h-11 border-yellow-400 ring-2 ring-yellow-400/40 opacity-100'
@@ -288,6 +284,7 @@ const Lightbox: React.FC<{
           </div>
         )}
       </div>
+      </BorderGlow>
       <style>{`
         @keyframes lightboxBackdropIn {
           from { opacity: 0; }
@@ -395,6 +392,14 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
 
   return (
     <>
+      <BorderGlow
+        borderRadius={12}
+        glowRadius={16}
+        glowIntensity={0.6}
+        edgeSensitivity={40}
+        glowColor="43 90 45"
+        colors={['#ca8a04', '#eab308', '#78350f']}
+      >
       <div
         ref={cardRef}
         onMouseMove={onCardMouseMove}
@@ -509,8 +514,12 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
                 {images.map((src, i) => (
                   <div
                     key={src}
-                    className="absolute inset-0 transition-transform duration-500 ease-out will-change-transform"
-                    style={{ transform: `translateX(${(i - idx) * 100}%)` }}
+                    className="absolute inset-0 transition-[opacity,filter] duration-[650ms] ease-out will-change-[opacity,filter]"
+                    style={{
+                      opacity: i === idx ? 1 : 0,
+                      filter: i === idx ? 'blur(0px)' : 'blur(14px)',
+                      zIndex: i === idx ? 1 : 0,
+                    }}
                   >
                     <img src={src} alt={`${repo.name} ${i + 1}`}
                       className="h-full w-full object-contain pointer-events-none transition-transform duration-700 ease-out group-hover/card:scale-[1.04]" draggable={false} />
@@ -620,6 +629,7 @@ const RepositoryCard: React.FC<{ repo: IRepository }> = ({ repo }) => {
           ))}
         </div>
       </div>
+      </BorderGlow>
 
       {/* Lightbox portal */}
       {lightbox && (

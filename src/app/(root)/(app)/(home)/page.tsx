@@ -1,8 +1,17 @@
 import { SOCIALS } from '@/constans/common'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { SiGooglescholar, SiLeetcode } from 'react-icons/si'
+import SocialDock from './components/SocialDock'
 
 export const dynamic = 'force-dynamic'
+
+const SOCIAL_DOCK_ITEMS = [
+  { icon: <FaInstagram size={18} />, label: 'Instagram', href: SOCIALS.IG },
+  { icon: <FaGithub size={18} />, label: 'GitHub', href: SOCIALS.GH },
+  { icon: <FaLinkedin size={18} />, label: 'LinkedIn', href: SOCIALS.IN },
+  { icon: <SiGooglescholar size={18} />, label: 'Google Scholar', href: SOCIALS.SCHOLAR },
+  { icon: <SiLeetcode size={18} />, label: 'LeetCode', href: SOCIALS.LEETCODE },
+]
 
 export default function HomePage() {
   return (
@@ -17,23 +26,7 @@ export default function HomePage() {
           <span className="block text-sm opacity-90">AI Systems Engineer | Backend & Agentic Systems | Product Builder</span>
         </span>
       </h1>
-      <div className="mx-auto flex">
-        <a href={SOCIALS.IG} aria-label="Instagram" target="_blank" rel="noopener" className="mx-2 block p-2 opacity-80 hover:opacity-95">
-          <FaInstagram size={20} />
-        </a>
-        <a href={SOCIALS.GH} aria-label="GitHub" target="_blank" rel="noopener" className="mx-2 block p-2 opacity-80 hover:opacity-95">
-          <FaGithub size={20} />
-        </a>
-        <a href={SOCIALS.IN} aria-label="Linkedin" target="_blank" rel="noopener" className="mx-2 block p-2 opacity-80 hover:opacity-95">
-          <FaLinkedin size={20} />
-        </a>
-        <a href={SOCIALS.SCHOLAR} aria-label="Google Scholar" target="_blank" rel="noopener" className="mx-2 block p-2 opacity-80 hover:opacity-95">
-          <SiGooglescholar size={20} />
-        </a>
-        <a href={SOCIALS.LEETCODE} aria-label="LeetCode" target="_blank" rel="noopener" className="mx-2 block p-2 opacity-80 hover:opacity-95">
-          <SiLeetcode size={20} />
-        </a>
-      </div>
+      <SocialDock items={SOCIAL_DOCK_ITEMS} />
     </div>
   )
 }
